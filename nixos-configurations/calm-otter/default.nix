@@ -3,7 +3,7 @@
   imports = [
     ../common.nix
     ../hardware/L450.nix
-    (modulesPath + "/kde")
+    ../../nixos-modules/kde
   ];
 
   powerManagement.cpuFreqGovernor = "powersave";
