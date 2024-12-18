@@ -1,6 +1,7 @@
 { config, lib, modulesPath, pkgs, ... }:
 {
   imports = [
+    ../common.nix
     ../hardware/L450.nix
     (modulesPath + "/kde")
   ];
