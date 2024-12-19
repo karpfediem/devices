@@ -3,7 +3,7 @@
     inputs.disko.nixosModules.disko
   ];
 
-  allowUnfreePredicate = pkg: builtin.elem (lib.getName pkg) [
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
     "steam-unwrapped"
     "steam-original"
