@@ -4,7 +4,20 @@
     ../common.nix
     ../hardware/L450.nix
     ../../nixos-modules/kde
+    ../../nixos-modules/steam
   ];
+
+  environment.systemPackages = lib.attrValues {
+    inherit (pkgs)
+      git
+      neovim
+      kitty
+      vault-bin
+      parsec-bin
+      ;
+  };
+
+  programs.firefox.enable = true;
 
   powerManagement.cpuFreqGovernor = "powersave";
   time.timeZone = "Europe/Berlin";
@@ -30,13 +43,6 @@
       dates = "daily";
       options = "--delete-older-than 7d";
     };
-  };
-
-  environment.systemPackages = lib.attrValues {
-    inherit (pkgs)
-      git
-      neovim
-      ;
   };
 
   system.stateVersion = "24.11";
