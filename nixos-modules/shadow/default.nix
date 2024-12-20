@@ -1,10 +1,10 @@
 {pkgs, ...}: {
 
   environment.systemPackages = [
-       (pkgs.appimageTools.wrapType2 {
+    (pkgs.appimageTools.wrapType2 {
         pname = "shadow-tech";
 	version = "0.1.0";
-        src = fetchurl {
+        src = pkgs.fetchurl {
           url = "https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/ShadowPC.AppImage";
           hash = "sha256-evwt7S2jxyFq9Kmx4OvX4Kuabuq2fM2PWp3GI2YCe/c=";
         };
