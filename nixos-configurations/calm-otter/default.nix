@@ -5,6 +5,7 @@
     ../hardware/L450.nix
     ../../nixos-modules/kde
     ../../nixos-modules/steam
+    ../../nixos-modules/shadow
   ];
 
   environment.systemPackages = lib.attrValues {
