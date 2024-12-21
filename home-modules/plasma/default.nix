@@ -13,11 +13,11 @@
      workspace = {
       clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
       lookAndFeel = "org.kde.breezedark.desktop";
+      iconTheme = "breeze-dark";
       cursor = {
         theme = "Bibata-Modern-Ice";
         size = 22;
       };
-      iconTheme = "Breeze-Dark";
     };
     hotkeys.commands."launch-konsole" = {
       name = "Launch Terminal";
