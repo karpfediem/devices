@@ -8,6 +8,7 @@ in
     ezModules.direnv
     ezModules.git
     ezModules.terminal
+    ezModules.plasma
   ];
 
   catppuccin.enable = true;
