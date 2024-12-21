@@ -1,12 +1,16 @@
-{ pkgs, ezModules, osConfig, ... }:
+{ inputs, pkgs, ezModules, osConfig, ... }:
 let
   username = "carp";
 in
 {
   imports = [
+    ./common.nix
     ezModules.direnv
     ezModules.git
+    ezModules.terminal
   ];
+
+  catppuccin.enable = true;
 
   home = {
     username = osConfig.users.users.${username}.name or "${username}";
