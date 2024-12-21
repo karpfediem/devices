@@ -33,6 +33,7 @@
     carp = {
       isNormalUser = true;
       description = "fishy";
+      extraGroups = [ "wheel" ];
     };
   };
 
