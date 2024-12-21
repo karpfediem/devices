@@ -1,8 +1,11 @@
-{inputs, ...}: {
+{inputs, pkgs, ...}: {
   imports = [ 
     inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
 
+  home.packages = with pkgs; [
+    bibata-cursors
+  ];
   
   programs.plasma = {
     enable = true;
@@ -12,7 +15,7 @@
       lookAndFeel = "org.kde.breezedark.desktop";
       cursor = {
         theme = "Bibata-Modern-Ice";
-        size = 32;
+        size = 22;
       };
       iconTheme = "Breeze-Dark";
     };
