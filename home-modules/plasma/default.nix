@@ -21,7 +21,7 @@
     };
     hotkeys.commands."launch-konsole" = {
       name = "Launch Terminal";
-      key = "Meta+Enter";
+      key = "Meta+Return";
       command = "kitty";
     };
   };
