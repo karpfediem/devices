@@ -14,7 +14,7 @@
         theme = "Bibata-Modern-Ice";
         size = 32;
       };
-      iconTheme = "Papirus-Dark";
+      iconTheme = "Breeze-Dark";
     };
     hotkeys.commands."launch-konsole" = {
       name = "Launch Terminal";
