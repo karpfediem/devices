@@ -6,6 +6,7 @@
 
   catppuccin.enable = lib.mkDefault true;
   catppuccin.flavor = lib.mkDefault "mocha";
+  catppuccin.accent = lib.mkDefault "maroon";
 
   nix.channel.enable = false;
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
