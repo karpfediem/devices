@@ -7,7 +7,7 @@
 }:
 let
   cfg = config.programs.plasma.catppuccin;
-  cursorCfg = config.catppuccin.pointerCursor;
+  cursorCfg = config.catppuccin.cursors;
   enable = cfg.enable && config.programs.plasma.enable;
 
   lib' = import "${inputs.catppuccin}/modules/lib" { inherit config lib pkgs; };
