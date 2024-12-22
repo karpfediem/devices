@@ -1,6 +1,6 @@
-{inputs, pkgs, osConfig, ...}: 
+{inputs, pkgs, osConfig, config, ...}:
 let
-  ctp = osConfig.catppuccin;
+  ctp = osConfig.catppuccin or config.catppuccin or {flavor = "mocha"; accent = "maroon";};
 in
 {
   imports = [ 
