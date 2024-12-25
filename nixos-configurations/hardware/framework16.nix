@@ -33,7 +33,7 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # VAAPI
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   system.stateVersion = "24.11";
 }
