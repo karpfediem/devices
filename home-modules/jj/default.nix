@@ -4,6 +4,7 @@
     settings = {
       ui = {
         paginate = "never";
+	default-command = "log";
       };
       user = {
         email = "karpfen@karpfen.dev";
