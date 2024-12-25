@@ -7,6 +7,7 @@ in
     ./common.nix
     ezModules.direnv
     ezModules.git
+    ezModules.jj
     ezModules.terminal
     ezModules.plasma
   ];
