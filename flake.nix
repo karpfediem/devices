@@ -45,6 +45,7 @@
         root = ./.;
         globalArgs = { inherit inputs; };
 	nixos.hosts.calm-otter.userHomeModules = [ "carp" ];
+	nixos.hosts.coy-koi.userHomeModules = [ "carp" ];
       };
     };
 }
