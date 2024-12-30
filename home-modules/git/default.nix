@@ -12,6 +12,7 @@
       amend = "commit --amend --no-edit";
       wdiff = "diff -w --word-diff=color --ignore-space-at-eol";
       as = "add -u";
+      aa = "add .";
       l1 = "log -1 --pretty=slog";
       l5 = "log -5 --pretty=slog";
       slog = "log --pretty=slog";
