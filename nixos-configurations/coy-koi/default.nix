@@ -15,6 +15,7 @@
       kitty
       vault-bin
       parsec-bin
+      btop
       ;
   };
 
