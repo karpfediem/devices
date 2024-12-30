@@ -35,5 +35,8 @@
   # VAAPI
   hardware.graphics.enable = true;
 
+  # firmware updates
+  services.fwupd.enable = true;
+
   system.stateVersion = "24.11";
 }
