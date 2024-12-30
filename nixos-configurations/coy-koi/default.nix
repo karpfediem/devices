@@ -19,6 +19,9 @@
       ;
   };
 
+  hardware.bluetooth.enable = true;
+  #services.blueman.enable = true;
+
   programs.firefox.enable = true;
 
   powerManagement.cpuFreqGovernor = "powersave";
