@@ -6,6 +6,7 @@
     ../../nixos-modules/kde
     ../../nixos-modules/steam
     ../../nixos-modules/shadow
+    ../../nixos-modules/vpn
   ];
 
   environment.systemPackages = lib.attrValues {
