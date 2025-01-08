@@ -44,8 +44,10 @@
       ezConfigs = {
         root = ./.;
         globalArgs = { inherit inputs; };
-	nixos.hosts.calm-otter.userHomeModules = [ "carp" ];
-	nixos.hosts.coy-koi.userHomeModules = [ "carp" ];
+	nixos.hosts = {
+	  calm-otter.userHomeModules = [ "carp" ];
+	  coy-koi.userHomeModules = [ "carp" ];
+	};
       };
     };
 }
