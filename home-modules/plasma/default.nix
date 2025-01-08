@@ -6,6 +6,7 @@ in
   imports = [ 
     inputs.plasma-manager.homeManagerModules.plasma-manager
     ./catppuccin.nix
+    ./spectacle.nix
   ];
 
 
