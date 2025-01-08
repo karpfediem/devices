@@ -31,6 +31,14 @@
         flake-parts.follows = "flake-parts";
       };
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+    # url = "github:nix-community/nixvim/nixos-24.11";
+    };
+    Neve.url = "github:redyf/Neve";
   };
 
   outputs = inputs@{ flake-parts, ez-configs, ... }:

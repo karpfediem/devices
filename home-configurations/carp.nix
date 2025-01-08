@@ -10,6 +10,7 @@ in
     ezModules.jj
     ezModules.terminal
     ezModules.plasma
+    ezModules.nvim
   ];
 
   catppuccin.enable = true;
