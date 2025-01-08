@@ -6,7 +6,7 @@
     ./disko
   ];
   
-  disko.devices.disk.main.device = "/dev/disk/by-id/usb-Lexar_USB_Flash_Drive_AA6R1I85VT60XMWH-0:0";
+  disko.devices.disk.main.device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7DPNF0XB26296A";
 
   swapDevices = lib.mkForce [ ];
 
