@@ -1,17 +1,4 @@
 {...}: {
-  nixpkgs.overlays = [
-    (final: prev: {
-      kitty = prev.kitty.overrideAttrs (o: {
-        postInstall =
-          (o.postInstall or "")
-          + ''
-            cp -f ${./kitty.app.png} $out/share/icons/hicolor/256x256/apps/kitty.png
-            rm -f $out/share/icons/hicolor/scalable/apps/kitty.svg
-          '';
-      });
-    })
-  ];
-
   programs.kitty = {
     enable = true;
     shellIntegration = {
@@ -31,5 +18,5 @@
     '';
   };
 
-  xdg.configFile."kitty/kitty.app.png" = { source = ./kitty.app.png; recursive = true;};
+  xdg.configFile."kitty/kitty.app.png" = { source = ../../nixos-modules/nixpkgs/overlays/kitty/kitty.app.png; recursive = true;};
 }

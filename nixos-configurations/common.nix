@@ -1,7 +1,8 @@
-{inputs, lib, ...} : {
+{inputs, pkgs, lib, ezModules, ...} : {
   imports = [
     inputs.disko.nixosModules.disko
     inputs.catppuccin.nixosModules.catppuccin
+    ezModules.nixpkgs
   ];
 
   catppuccin = {
@@ -10,16 +11,8 @@
     accent = lib.mkDefault "maroon";
   };
 
-  nix.channel.enable = false;
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-unwrapped"
-    "steam-original"
-    "steam-run"
-    "vault-bin"
-    "netdata"
-    "nvidia-x11"
-    "nvidia-settings"
+  environment.systemPackages = [
+    pkgs.home-manager
   ];
-
+  nix.channel.enable = false;
 }

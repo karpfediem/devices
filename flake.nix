@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     catppuccin.url = "github:catppuccin/nix";
     
@@ -32,13 +33,28 @@
       };
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    firefox-addons = {
+      url = gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-    # url = "github:nix-community/nixvim/nixos-24.11";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        home-manager.follows = "home-manager";
+      };
+      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+      #url = "github:nix-community/nixvim/nixos-24.11";
     };
-    Neve.url = "github:redyf/Neve";
+    Neve = {
+      inputs.nixvim.follows = "nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:redyf/Neve";
+    };
   };
 
   outputs = inputs@{ flake-parts, ez-configs, ... }:

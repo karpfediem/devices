@@ -12,6 +12,7 @@ in
     ezModules.plasma
     ezModules.nvim
     ezModules.hydrus
+    ezModules.browser
   ];
 
   catppuccin.enable = true;
@@ -38,6 +39,7 @@ in
       obs-studio
       ffmpeg
       gifski
+      jetbrains-toolbox
     ];
   };
 

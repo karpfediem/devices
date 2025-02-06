@@ -1,9 +1,6 @@
-{inputs, lib, ...}: {
+{inputs, ezModules, ...}: {
   imports = [
+    ../nixos-modules/nixpkgs
     inputs.catppuccin.homeManagerModules.catppuccin
-  ];
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "parsec-bin"
   ];
 }
