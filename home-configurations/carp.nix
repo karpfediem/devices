@@ -11,6 +11,7 @@ in
     ezModules.terminal
     ezModules.plasma
     ezModules.nvim
+    ezModules.hydrus
   ];
 
   catppuccin.enable = true;
@@ -25,7 +26,18 @@ in
     );
 
     packages = with pkgs; [
-      neovim
+      kitty
+      librewolf
+      keepassxc
+      chromium
+      parsec-bin
+      vesktop
+      krita
+      element-desktop
+      signal-desktop
+      obs-studio
+      ffmpeg
+      gifski
     ];
   };
 

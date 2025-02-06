@@ -17,7 +17,9 @@
     "steam-original"
     "steam-run"
     "vault-bin"
-    "parsec-bin"
+    "netdata"
+    "nvidia-x11"
+    "nvidia-settings"
   ];
 
 }

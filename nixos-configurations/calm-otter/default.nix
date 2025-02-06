@@ -3,18 +3,17 @@
   imports = [
     ../common.nix
     ../hardware/L450.nix
-    ../../nixos-modules/kde
-    ../../nixos-modules/steam
-    ../../nixos-modules/shadow
+    ../../nixos-modules/fun/desktop/kde
+    ../../nixos-modules/fun/games/steam
+    ../../nixos-modules/fun/games/shadow
   ];
 
   environment.systemPackages = lib.attrValues {
     inherit (pkgs)
       git
       neovim
-      kitty
+      btop
       vault-bin
-      parsec-bin
       ;
   };
 

@@ -2,11 +2,15 @@
 {
   imports = [
     ../common.nix
-    ../hardware/framework16.nix
+    ../hardware/asus-pro-ws-x570-ace.nix
+    # ../../nixos-modules/core/auto-upgrades
+    ../../nixos-modules/core/backup
+    ../../nixos-modules/core/monitoring/netdata
+    ../../nixos-modules/core/u2f
     ../../nixos-modules/fun/desktop/kde
+    ../../nixos-modules/fun/style/fonts.nix
     ../../nixos-modules/fun/games/steam
-    ../../nixos-modules/fun/games/shadow
-    ../../nixos-modules/fun/vpn/mullvad
+    ../../nixos-modules/fun/syncthing
   ];
 
   environment.systemPackages = lib.attrValues {
@@ -23,12 +27,12 @@
 
   programs.firefox.enable = true;
 
-  powerManagement.cpuFreqGovernor = "powersave";
+  powerManagement.cpuFreqGovernor = "ondemand";
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking = {
-    hostName = "coy-koi";
+    hostName = "aquarium";
     networkmanager.enable = true;
   };
 
