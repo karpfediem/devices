@@ -11,6 +11,7 @@
     ../../nixos-modules/fun/style/fonts.nix
     ../../nixos-modules/fun/games/steam
     ../../nixos-modules/fun/syncthing
+    ../../nixos-modules/tools
   ];
 
   environment.systemPackages = lib.attrValues {
