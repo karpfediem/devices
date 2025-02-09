@@ -13,6 +13,7 @@ in
     ezModules.nvim
     ezModules.hydrus
     ezModules.browser
+    ezModules.jetbrains
   ];
 
   catppuccin.enable = true;

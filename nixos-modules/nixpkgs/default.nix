@@ -29,6 +29,7 @@ in {
     "nvidia-x11"
     "nvidia-settings"
     "jetbrains-toolbox"
+    "rust-rover"
     "parsec-bin"
   ];
 }
