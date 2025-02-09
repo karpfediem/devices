@@ -31,5 +31,6 @@ in {
     "jetbrains-toolbox"
     "rust-rover"
     "parsec-bin"
+    "libqalculate"
   ];
 }

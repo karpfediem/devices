@@ -7,5 +7,6 @@
     devenv
     jq
     yq-go
+    libqalculate
   ];
 }
