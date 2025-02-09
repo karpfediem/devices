@@ -16,6 +16,7 @@ in {
     (pinPackagesToVersion inputs.nixpkgs-unstable [
       "teller"
       "jujutsu"
+      "hydrus"
     ])
   ];
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
