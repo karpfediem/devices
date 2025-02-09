@@ -8,6 +8,7 @@
     ../../nixos-modules/core/monitoring/netdata
     ../../nixos-modules/core/u2f
     ../../nixos-modules/fun/desktop/kde
+    ../../nixos-modules/fun/vpn/mullvad
     ../../nixos-modules/fun/style/fonts.nix
     ../../nixos-modules/fun/games/steam
     ../../nixos-modules/fun/syncthing
