@@ -7,6 +7,8 @@
     devenv
     jq
     yq-go
+    ripgrep
     libqalculate
+    du-dust
   ];
 }
