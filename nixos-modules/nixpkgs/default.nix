@@ -30,6 +30,7 @@ in {
     "nvidia-settings"
     "jetbrains-toolbox"
     "rust-rover"
+    "goland"
     "parsec-bin"
     "libqalculate"
   ];
