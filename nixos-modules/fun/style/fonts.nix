@@ -9,6 +9,7 @@
       noto-fonts-emoji
       twemoji-color-font
       crimson
+      comfortaa
       dejavu_fonts
       font-awesome
       inconsolata # monospaced
