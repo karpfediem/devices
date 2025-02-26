@@ -42,18 +42,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
-        home-manager.follows = "home-manager";
-      };
+      #     url = "github:nix-community/nixvim";
+      #     inputs = {
+      #       nixpkgs.follows = "nixpkgs-unstable";
+      #       home-manager.follows = "home-manager";
+      #     };
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-      #url = "github:nix-community/nixvim/nixos-24.11";
-    };
-    Neve = {
-      inputs.nixvim.follows = "nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      url = "github:redyf/Neve";
+      url = "github:nix-community/nixvim/nixos-24.11";
     };
   };
 

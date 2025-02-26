@@ -7,10 +7,8 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
-    imports = [ inputs.Neve.nixvimModule ];
+    imports = [ ];
     plugins = {
-      fidget.enable = lib.mkForce false;
-      wakatime.enable = lib.mkForce false;
     };
   };
 }
