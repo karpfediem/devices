@@ -14,6 +14,7 @@ in
     ezModules.hydrus
     ezModules.browser
     ezModules.jetbrains
+    ezModules.tools
   ];
 
   catppuccin.enable = true;
