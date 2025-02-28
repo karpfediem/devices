@@ -4,7 +4,12 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     catppuccin.url = "github:catppuccin/nix";
-    
+
+    system-manager = {
+      url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,13 +57,21 @@
     };
   };
 
-  outputs = inputs@{ flake-parts, ez-configs, ... }:
+  outputs = inputs@{ flake-parts, system-manager, ez-configs, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ez-configs.flakeModule
       ];
 
       systems = [ ];
+
+      flake = {
+        systemConfigs.default = system-manager.lib.makeSystemConfig {
+          modules = [
+            ./system-modules
+          ];
+        };
+      };
 
       ezConfigs = {
         root = ./.;
