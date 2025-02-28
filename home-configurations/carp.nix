@@ -31,7 +31,7 @@ in
     packages = with pkgs; [
       kitty
       keepassxc
-      chromium
+      ungoogled-chromium
       parsec-bin
       vesktop
       krita
