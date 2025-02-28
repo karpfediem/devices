@@ -27,8 +27,6 @@
   hardware.bluetooth.enable = true;
   #services.blueman.enable = true;
 
-  programs.firefox.enable = true;
-
   powerManagement.cpuFreqGovernor = "ondemand";
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";

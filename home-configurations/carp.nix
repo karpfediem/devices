@@ -30,7 +30,6 @@ in
 
     packages = with pkgs; [
       kitty
-      librewolf
       keepassxc
       chromium
       parsec-bin

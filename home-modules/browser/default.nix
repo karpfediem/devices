@@ -8,10 +8,15 @@
     inherit (pkgs) lib stdenv fetchurl;
   };
 in {
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
-    package = pkgs.firefox-beta;
+    #package = pkgs.firefox-beta;
 #    package = inputs.firefox.packages.${pkgs.system}.firefox-nightly-bin;
+    settings = {
+      "privacy.clearOnShutdown.history" = false;
+      "privacy.clearOnShutdown.cookies" = false;
+      "network.cookie.lifetimePolicy" = 0;
+    };
     profiles = {
       carp = {
         id = 0;
