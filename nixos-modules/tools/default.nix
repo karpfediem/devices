@@ -10,5 +10,7 @@
     ripgrep
     libqalculate
     du-dust
+    xclip
+    wl-clipboard
   ];
 }
