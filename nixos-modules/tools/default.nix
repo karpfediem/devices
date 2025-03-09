@@ -8,6 +8,7 @@
     jq
     yq-go
     ripgrep
+    just
     libqalculate
     du-dust
     xclip
