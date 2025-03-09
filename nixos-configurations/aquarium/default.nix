@@ -8,6 +8,7 @@
     ../../nixos-modules/core/monitoring/netdata
     ../../nixos-modules/core/u2f
     ../../nixos-modules/fun/desktop/kde
+    ../../nixos-modules/fun/libvirt
     ../../nixos-modules/fun/vpn/mullvad
     ../../nixos-modules/fun/style/fonts.nix
     ../../nixos-modules/fun/games/steam
@@ -40,7 +41,7 @@
     carp = {
       isNormalUser = true;
       description = "fishy";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "libvirtd" ];
     };
   };
 
