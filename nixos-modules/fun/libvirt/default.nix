@@ -1,9 +1,7 @@
 {pkgs, ... }:
 {
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
-  };
+  virtualisation.libvirtd.enable = true;
+  environment.systemPackages = with pkgs; [ virtiofsd ];
   programs.virt-manager.enable = true;
 
   # Enable TPM emulation (optional)
