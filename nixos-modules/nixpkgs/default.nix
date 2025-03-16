@@ -14,6 +14,7 @@ in {
     inputs.nur.overlays.default
     (import ./overlays/kitty)
     (pinPackagesToVersion inputs.nixpkgs-unstable [
+      "devenv"
       "teller"
       "jujutsu"
       "hydrus"
