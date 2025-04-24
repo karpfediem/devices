@@ -55,9 +55,13 @@
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
       url = "github:nix-community/nixvim/nixos-24.11";
     };
-  };
 
-  outputs = inputs@{ flake-parts, system-manager, ez-configs, ... }:
+    fw-fanctrl = {
+      url = "github:TamtamHero/fw-fanctrl/packaging/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+  outputs = inputs@{ flake-parts, system-manager, ez-configs, fw-fanctrl, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ez-configs.flakeModule

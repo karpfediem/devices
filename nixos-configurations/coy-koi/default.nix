@@ -3,6 +3,7 @@
   imports = [
     ../common.nix
     ../hardware/framework16.nix
+    ../hardware/fw-fans.nix
     ../../nixos-modules/fun/desktop/kde
     ../../nixos-modules/fun/games/steam
     ../../nixos-modules/fun/games/shadow
