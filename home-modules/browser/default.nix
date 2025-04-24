@@ -8,6 +8,7 @@
     inherit (pkgs) lib stdenv fetchurl;
   };
 in {
+  home.packages = with pkgs; [ brave ];
   programs.librewolf = {
     enable = true;
     #package = pkgs.firefox-beta;
