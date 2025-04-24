@@ -1,8 +1,12 @@
 host := `hostname`
+username := `whoami`
 
 # Rebuild and switch NixOS configuration
 switch:
   nixos-rebuild switch --flake ~/devices#{{host}} --use-remote-sudo
+
+home:
+  home-manager switch --flake ~/devices#{{username}}@{{host}}
 
 # Initial system bootstrap using disko-install
 disko-install NEWHOST DISK:
