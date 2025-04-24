@@ -6,7 +6,7 @@
 	version = "0.1.0";
         src = pkgs.fetchurl {
           url = "https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/ShadowPC.AppImage";
-          hash = "sha256-evwt7S2jxyFq9Kmx4OvX4Kuabuq2fM2PWp3GI2YCe/c=";
+          hash = "sha256-0jGv+1Slj4smRvPw6dc7+SAq0BQmc7NYMXztkR5/0nU=";
         };
 	extraPkgs = pkgs: with pkgs; [
 	  intel-media-driver
