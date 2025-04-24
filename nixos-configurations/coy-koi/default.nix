@@ -7,6 +7,7 @@
     ../../nixos-modules/fun/games/steam
     ../../nixos-modules/fun/games/shadow
     ../../nixos-modules/fun/vpn/mullvad
+    ../../nixos-modules/tools
   ];
 
   environment.systemPackages = lib.attrValues {
