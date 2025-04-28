@@ -25,8 +25,29 @@
       ;
   };
 
-  hardware.bluetooth.enable = true;
-  #services.blueman.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+		Experimental = true;
+      };
+    };
+  };
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+    wireplumber.extraConfig = {
+      "monitor.bluez.properties" = {
+        "bluez5.roles" = [ "a2dp_sink" "a2dp_source" "bap_sink" "bap_source" ];
+      };
+    };
+  };
+
+  hardware.pulseaudio = {
+    package = pkgs.pulseaudioFull;
+  };
 
   powerManagement.cpuFreqGovernor = "ondemand";
   time.timeZone = "Europe/Berlin";
