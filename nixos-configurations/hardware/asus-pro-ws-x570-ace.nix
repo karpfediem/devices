@@ -8,7 +8,10 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.nixos-hardware.nixosModules.asus-pro-ws-x570-ace
+    ./disko
   ];
+
+  disko.devices.disk.main.device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7DPNF0XA06858X";
 
   swapDevices = lib.mkForce [ ];
   boot = {
@@ -17,12 +20,6 @@
       kernelModules = ["dm-snapshot"];
       supportedFilesystems = ["vfat" "fat"];
       systemd.enable = true;
-      luks.devices = {
-          "nixos-crypt" = {
-            device = "/dev/disk/by-uuid/81d4dc2c-fb76-41a4-9d31-84d68d874b14";
-            preLVM = true;
-          };
-      };
     };
     kernelModules = ["kvm-amd" "amd-pstate"];
     kernelParams = ["initcall_blacklist=acpi_cpufreq_init" "amd_pstate=passive" "amd_pstate=active" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
@@ -34,18 +31,6 @@
       efi.canTouchEfiVariables = true;
     };
   };
-
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/89d3f54b-6854-4bd4-b132-7c8daa625b56";
-    fsType = "ext4";
-  };
-  fileSystems."/mnt/media" = {
-    device = "/dev/disk/by-uuid/E480399880397262";
-    fsType = "ntfs-3g";
-    options = ["rw" "uid=1000"];
-  };
-
 
   networking.useDHCP = lib.mkDefault true;
   networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
