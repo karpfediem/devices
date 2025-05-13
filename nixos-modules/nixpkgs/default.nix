@@ -18,6 +18,8 @@ in {
       "teller"
       "jujutsu"
       "hydrus"
+      "libqalculate"
+      "teamspeak6-client"
     ])
   ];
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
