@@ -31,7 +31,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     ez-configs = {
-      url = "github:ehllie/ez-configs";
+      url = "github:karpfediem/ez-configs/badidea";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -54,6 +54,9 @@
       #     };
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
       url = "github:nix-community/nixvim/nixos-24.11";
+    };
+    nixified-ai = {
+      url = "github:nixified-ai/flake";
     };
 
     fw-fanctrl = {
@@ -81,7 +84,10 @@
         root = ./.;
         globalArgs = { inherit inputs; };
         nixos.hosts = {
-          aquarium.userHomeModules = [ "carp" ];
+          aquarium = {
+            userHomeModules = [ "carp" ];
+            extraModules = [ inputs.nixified-ai.nixosModules.comfyui ];
+          };
           calm-otter.userHomeModules = [ "carp" ];
           coy-koi.userHomeModules = [ "carp" ];
         };

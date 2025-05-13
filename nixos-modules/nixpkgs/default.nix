@@ -23,6 +23,9 @@ in {
     ])
   ];
 
+  nixpkgs.config = {
+  	cudaSupport = true;
+  };
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     # Steam
     "steam"
@@ -32,6 +35,31 @@ in {
     # nvidia drivers
     "nvidia-x11"
     "nvidia-settings"
+    # CUDA support
+    "cudnn"
+    "cudatoolkit"
+    "cuda-merged"
+    "cuda_cuobjdump"
+    "cuda_gdb"
+    "cuda_nvcc"
+    "cuda_nvdisasm"
+    "cuda_nvprune"
+    "cuda_cccl"
+    "cuda_cudart"
+    "cuda_cupti"
+    "cuda_cuxxfilt"
+    "cuda_nvml_dev"
+    "cuda_nvrtc"
+    "cuda_nvtx"
+    "cuda_profiler_api"
+    "cuda_sanitizer_api"
+    "libcublas"
+    "libcufft"
+    "libcurand"
+    "libcusolver"
+    "libcusparse"
+    "libnpp"
+    "libnvjitlink"
     # Tools
     "vault-bin"
     "netdata"

@@ -14,7 +14,13 @@
     ../../nixos-modules/fun/games/steam
     ../../nixos-modules/fun/syncthing
     ../../nixos-modules/tools
+    ../../nixos-modules/fun/ai
   ];
+
+  systemd.services.nix-daemon.environment = {
+    HF_TOKEN = "changeme";
+    CIVITAI_API_TOKEN = "changeme";
+  };
 
   environment.systemPackages = lib.attrValues {
     inherit (pkgs)
