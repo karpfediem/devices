@@ -11,8 +11,9 @@
     accent = lib.mkDefault "maroon";
   };
 
-  environment.systemPackages = [
-    pkgs.home-manager
+  environment.systemPackages = with pkgs; [
+    home-manager
+    attic-client
   ];
   nix.channel.enable = false;
   nix.registry.unstable.flake = inputs.nixpkgs-unstable;
