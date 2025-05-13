@@ -22,19 +22,22 @@ in {
       "teamspeak6-client"
     ])
   ];
+
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    # Steam
     "steam"
     "steam-unwrapped"
     "steam-original"
     "steam-run"
-    "vault-bin"
-    "netdata"
+    # nvidia drivers
     "nvidia-x11"
     "nvidia-settings"
+    # Tools
+    "vault-bin"
+    "netdata"
     "jetbrains-toolbox"
     "rust-rover"
     "goland"
     "parsec-bin"
-    "libqalculate"
   ];
 }
