@@ -73,7 +73,7 @@
 
   nix = {
     extraOptions = "experimental-features = nix-command flakes";
-
+    settings.trusted-users = [ "carp" ];
     gc = {
       automatic = true;
       dates = "daily";
