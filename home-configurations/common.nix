@@ -1,6 +1,6 @@
 {inputs, ezModules, ...}: {
   imports = [
     ../nixos-modules/nixpkgs
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
   ];
 }
