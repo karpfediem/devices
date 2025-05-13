@@ -25,6 +25,11 @@
       ;
   };
 
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
+
   hardware.bluetooth = {
     enable = true;
     settings = {
