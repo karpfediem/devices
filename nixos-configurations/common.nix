@@ -15,4 +15,5 @@
     pkgs.home-manager
   ];
   nix.channel.enable = false;
+  nix.registry.unstable.flake = inputs.nixpkgs-unstable;
 }
