@@ -1,4 +1,4 @@
-{pkgs, ...} : {
+{ pkgs, lib, ... }: {
   services.comfyui = {
     enable = true;
     host = "0.0.0.0";
@@ -9,4 +9,5 @@
       comfyui-impact-pack
     ];
   };
+  systemd.services.comfyui.wantedBy = lib.mkForce [ ];
 }
