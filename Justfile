@@ -5,6 +5,7 @@ username := `whoami`
 switch:
   nixos-rebuild switch --flake ~/devices#{{host}} --use-remote-sudo
 
+# Rebuild and switch Home-Manager configuration
 home:
   home-manager switch --flake ~/devices#{{username}}@{{host}}
 
