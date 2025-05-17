@@ -17,7 +17,6 @@
   ];
 
   nix = {
-    extraOptions = "experimental-features = nix-command flakes";
     channel.enable = false;
     registry.unstable.flake = inputs.nixpkgs-unstable;
 
@@ -28,6 +27,10 @@
     };
 
     settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       substituters = [
         "https://nix-community.cachix.org"
         "https://numtide.cachix.org"
