@@ -3,6 +3,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin.url = "github:catppuccin/nix";
 
     system-manager = {
@@ -59,10 +65,11 @@
   outputs = inputs@{ flake-parts, system-manager, ez-configs, fw-fanctrl, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
-        ez-configs.flakeModule
+        inputs.git-hooks-nix.flakeModule
+        inputs.ez-configs.flakeModule
       ];
 
-      systems = [ ];
+      systems = [ "x86_64-linux" ];
 
       flake = {
         systemConfigs.default = system-manager.lib.makeSystemConfig {
@@ -82,6 +89,23 @@
           };
           calm-otter.userHomeModules = [ "carp" ];
           coy-koi.userHomeModules = [ "carp" ];
+        };
+      };
+
+      perSystem = { config, self', inputs', system, pkgs, ... }: {
+        devShells.default = pkgs.mkShell {
+          name = "devices";
+          shellHook = ''
+            ${config.pre-commit.installationScript}
+            echo 1>&2 "Welcome to the development shell!"
+          '';
+        };
+
+        pre-commit = {
+          check.enable = true;
+          settings.hooks = {
+            nixpkgs-fmt.enable = true;
+          };
         };
       };
     };
