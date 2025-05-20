@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     hydrus
   ];
@@ -10,7 +10,7 @@
       icon = "/usr/lib/hydrus/static/hydrus_non-transparent.png";
       terminal = false;
       type = "Application";
-      categories = ["Application" "FileTools" "Graphics" "Network"];
+      categories = [ "Application" "FileTools" "Graphics" "Network" ];
     };
   };
 }

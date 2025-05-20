@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ ... }: {
   programs.ghostty = {
     enable = true;
     enableBashIntegration = true;
@@ -6,7 +6,7 @@
     enableZshIntegration = true;
   };
 
-    xdg.desktopEntries = {
+  xdg.desktopEntries = {
     ghostty = {
       name = "ghostty";
       genericName = "Ghostty";

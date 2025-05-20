@@ -1,4 +1,4 @@
-{inputs, lib, ...}:
+{ inputs, ... }:
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
@@ -8,7 +8,6 @@
     enable = true;
     defaultEditor = true;
     imports = [ ];
-    plugins = {
-    };
+    plugins = { };
   };
 }

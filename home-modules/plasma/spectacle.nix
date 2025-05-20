@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   programs.plasma.spectacle = {
     shortcuts = {
       captureActiveWindow = "Meta+S";

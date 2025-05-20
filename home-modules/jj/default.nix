@@ -1,10 +1,10 @@
-{...}: {
+{ ... }: {
   programs.jujutsu = {
     enable = true;
     settings = {
       ui = {
         paginate = "never";
-	default-command = "log";
+        default-command = "log";
       };
       user = {
         email = "karpfen@karpfen.dev";

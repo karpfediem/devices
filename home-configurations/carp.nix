@@ -1,4 +1,4 @@
-{ inputs, pkgs, ezModules, osConfig, ... }:
+{ pkgs, ezModules, osConfig, ... }:
 let
   username = "carp";
 in

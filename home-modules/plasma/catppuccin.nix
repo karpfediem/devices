@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ inputs, config, lib, pkgs, ... }:
 let
   cfg = config.programs.plasma.catppuccin;
   cursorCfg = config.catppuccin.cursors;

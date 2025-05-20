@@ -1,9 +1,9 @@
-{inputs, pkgs, osConfig, config, ...}:
+{ inputs, pkgs, osConfig, config, ... }:
 let
-  ctp = osConfig.catppuccin or config.catppuccin or {flavor = "mocha"; accent = "maroon";};
+  ctp = osConfig.catppuccin or config.catppuccin or { flavor = "mocha"; accent = "maroon"; };
 in
 {
-  imports = [ 
+  imports = [
     inputs.plasma-manager.homeManagerModules.plasma-manager
     ./catppuccin.nix
     ./spectacle.nix
@@ -13,7 +13,7 @@ in
   home.packages = with pkgs; [
     bibata-cursors
   ];
-  
+
   programs.plasma = {
     enable = true;
 
