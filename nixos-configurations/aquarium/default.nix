@@ -15,6 +15,7 @@
     ../../nixos-modules/fun/syncthing
     ../../nixos-modules/tools
     ../../nixos-modules/fun/ai
+    ../../nixos-modules/infra/k3s
   ];
 
   systemd.services.nix-daemon.environment = {
