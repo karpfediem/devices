@@ -57,7 +57,7 @@
     };
   };
 
-  hardware.pulseaudio = {
+  services.pulseaudio = {
     package = pkgs.pulseaudioFull;
   };
 
