@@ -41,6 +41,7 @@ in
       ffmpeg
       gifski
       jetbrains-toolbox
+      teamspeak6-client
     ];
   };
 
