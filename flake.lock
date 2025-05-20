@@ -49,11 +49,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747760887,
-        "narHash": "sha256-EEdBukyu/h5j2/vthEelzKKn/E6yie9vDpyk3yCUbiw=",
+        "lastModified": 1747763896,
+        "narHash": "sha256-olOwnn4KOqjG94dFvSqn8MOerpKg+dqRzIGcgKx+NTs=",
         "owner": "karpfediem",
         "repo": "ez-configs",
-        "rev": "b3bfd480610eb733d089643fe150d1f77adcad14",
+        "rev": "e1e67991e614275c72129d861d36642edea004d3",
         "type": "github"
       },
       "original": {
