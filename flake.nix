@@ -124,6 +124,7 @@
               check.enable = true;
               settings.hooks = {
                 nixpkgs-fmt.enable = true;
+                ripsecrets.enable = true;
               };
             };
 
