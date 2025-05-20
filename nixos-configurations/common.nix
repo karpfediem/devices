@@ -1,8 +1,8 @@
 {inputs, pkgs, lib, ezModules, ...} : {
   imports = [
+    ezModules.nixpkgs
     inputs.disko.nixosModules.disko
     inputs.catppuccin.nixosModules.catppuccin
-    ezModules.nixpkgs
   ];
 
   catppuccin = {

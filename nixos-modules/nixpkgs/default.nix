@@ -1,26 +1,5 @@
-{lib, inputs, ...}:
-let
- pinPackagesToVersion = nixpkgsInput: packageNames:
-  final: prev:
-  let
-    pinned = import nixpkgsInput {
-      system = final.system;
-      inherit (prev) config;
-    };
-  in builtins.listToAttrs ( map ( name: { inherit name; value = pinned.${name}; } ) packageNames );
-in {
+{ lib, ... }: {
   nixpkgs = {
-    overlays = [
-      inputs.nur.overlays.default
-      (import ./overlays/kitty)
-      (pinPackagesToVersion inputs.nixpkgs-unstable [
-        "devenv"
-        "teller"
-        "jujutsu"
-        "libqalculate"
-        "teamspeak6-client"
-      ])
-    ];
     config = {
       cudaSupport = true;
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -55,6 +34,7 @@ in {
         "libcurand"
         "libcusolver"
         "libcusparse"
+        "libcusparse_lt"
         "libnpp"
         "libnvjitlink"
         # Tools
@@ -64,6 +44,7 @@ in {
         "rust-rover"
         "goland"
         "parsec-bin"
+        "teamspeak6-client"
       ];
     };
   };

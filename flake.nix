@@ -62,7 +62,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ flake-parts, system-manager, ez-configs, fw-fanctrl, ... }:
+  outputs = inputs@{ flake-parts, system-manager, nixidy, ... }:
+    let
+      overlays = import ./overlays { inherit inputs; };
+      pkgsConfig = { };
+    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.git-hooks-nix.flakeModule
@@ -92,14 +96,23 @@
         };
       };
 
-      perSystem = { config, self', inputs', system, pkgs, ... }: {
-        devShells.default = pkgs.mkShell {
-          name = "devices";
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-            echo 1>&2 "Welcome to the development shell!"
-          '';
-        };
+      perSystem = { config, self', inputs', system, ... }:
+        let
+          pkgs = import inputs.nixpkgs {
+            inherit system overlays;
+            config = pkgsConfig;
+          };
+        in
+        {
+          _module.args = { inherit pkgs; };
+
+          devShells.default = pkgs.mkShell {
+            name = "devices";
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+              echo 1>&2 "Welcome to the development shell!"
+            '';
+          };
 
         pre-commit = {
           check.enable = true;
