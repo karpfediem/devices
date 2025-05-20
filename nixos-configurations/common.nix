@@ -1,4 +1,4 @@
-{inputs, pkgs, lib, ezModules, ...} : {
+{ inputs, pkgs, lib, ezModules, ... }: {
   imports = [
     ezModules.nixpkgs
     inputs.disko.nixosModules.disko

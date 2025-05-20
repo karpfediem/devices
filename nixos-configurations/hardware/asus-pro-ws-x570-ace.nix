@@ -1,9 +1,8 @@
-{
-  config,
-  lib,
-  modulesPath,
-  inputs,
-  ...
+{ config
+, lib
+, modulesPath
+, inputs
+, ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -16,15 +15,15 @@
   swapDevices = lib.mkForce [ ];
   boot = {
     initrd = {
-      availableKernelModules = ["nvme" "ehci_pci" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "vfat" "nls_ascii" "nls_cp437" "nls_iso8859-1" "usbhid"];
-      kernelModules = ["dm-snapshot"];
-      supportedFilesystems = ["vfat" "fat"];
+      availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "vfat" "nls_ascii" "nls_cp437" "nls_iso8859-1" "usbhid" ];
+      kernelModules = [ "dm-snapshot" ];
+      supportedFilesystems = [ "vfat" "fat" ];
       systemd.enable = true;
     };
-    kernelModules = ["kvm-amd" "amd-pstate"];
-    kernelParams = ["initcall_blacklist=acpi_cpufreq_init" "amd_pstate=passive" "amd_pstate=active" "nvidia.NVreg_PreserveVideoMemoryAllocations=1"];
+    kernelModules = [ "kvm-amd" "amd-pstate" ];
+    kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" "amd_pstate=passive" "amd_pstate=active" "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
-    extraModulePackages = [];
+    extraModulePackages = [ ];
 
     loader = {
       systemd-boot.enable = true;
@@ -49,7 +48,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -76,14 +75,14 @@
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.beta;
-#    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-#      version = "565.77";
-#      sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
-#      sha256_aarch64 = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
-#      openSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
-#      settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
-#      persistencedSha256 = lib.fakeSha256;
-#    };
+    #    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #      version = "565.77";
+    #      sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
+    #      sha256_aarch64 = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
+    #      openSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
+    #      settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
+    #      persistencedSha256 = lib.fakeSha256;
+    #    };
   };
 
   hardware.nvidia-container-toolkit.enable = true;

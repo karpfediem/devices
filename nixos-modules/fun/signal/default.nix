@@ -1,4 +1,4 @@
-{pkgs, lib, ...}: {
+{ pkgs, lib, ... }: {
   services.signald = {
     enable = true;
     user = lib.mkDefault "carp";

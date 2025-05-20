@@ -6,7 +6,7 @@
     ./vaapi-intel.nix
     ./disko
   ];
-  
+
   disko.devices.disk.main.device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LN256HCHP-000L7_S20HNXAGA74260";
 
   swapDevices = lib.mkForce [ ];

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     restic
     libnotify
@@ -46,40 +46,41 @@
   };
 
   # Notification services for all backups above
-  systemd.services = let
-    backups = {
-      home = {};
-    };
-  in
+  systemd.services =
+    let
+      backups = {
+        home = { };
+      };
+    in
     pkgs.lib.mkMerge [
       (pkgs.lib.attrsets.mapAttrs'
         (
           backupName: _value:
             pkgs.lib.attrsets.nameValuePair ("restic-backups-" + backupName)
-            {unitConfig.OnFailure = "notify-backup-${backupName}-failed.service";}
+              { unitConfig.OnFailure = "notify-backup-${backupName}-failed.service"; }
         )
         backups)
       (pkgs.lib.attrsets.mapAttrs'
         (
           backupName: _value:
             pkgs.lib.attrsets.nameValuePair ("notify-backup-" + backupName + "-failed")
-            {
-              enable = true;
-              description = "Notify on failed backup";
-              serviceConfig = {
-                Type = "oneshot";
-                User = "carp";
-              };
+              {
+                enable = true;
+                description = "Notify on failed backup";
+                serviceConfig = {
+                  Type = "oneshot";
+                  User = "carp";
+                };
 
-              # required for notify-send
-              environment.DBUS_SESSION_BUS_ADDRESS = "unix:path=/run/user/1000/bus";
+                # required for notify-send
+                environment.DBUS_SESSION_BUS_ADDRESS = "unix:path=/run/user/1000/bus";
 
-              script = ''
-                ${pkgs.libnotify}/bin/notify-send --urgency=critical \
-                  "Backup ${backupName} failed" \
-                  "$(journalctl -u restic-backups-${backupName} -n 5 -o cat)"
-              '';
-            }
+                script = ''
+                  ${pkgs.libnotify}/bin/notify-send --urgency=critical \
+                    "Backup ${backupName} failed" \
+                    "$(journalctl -u restic-backups-${backupName} -n 5 -o cat)"
+                '';
+              }
         )
         backups)
     ];

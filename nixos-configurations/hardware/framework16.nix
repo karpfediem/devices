@@ -5,7 +5,7 @@
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
     ./disko
   ];
-  
+
   disko.devices.disk.main.device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7DPNF0XB26296A";
 
   swapDevices = lib.mkForce [ ];
