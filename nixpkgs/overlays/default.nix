@@ -1,6 +1,5 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 let
-  lib = inputs.nixpkgs.lib;
   pinPackagesToVersion = nixpkgsInput: packageNames:
     final: prev:
       let
@@ -23,4 +22,4 @@ in
     "hydrus"
   ])
 ]
-++ (import ./pkgs { inherit inputs; })
+++ (import ./pkgs { inherit lib; })

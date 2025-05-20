@@ -1,7 +1,5 @@
-{ inputs, ... }:
+{ lib, ... }:
 let
-  lib = inputs.nixpkgs.lib;
-
   dirs = let all = builtins.readDir ./.; in (lib.filter (n: all.${n} == "directory")) (lib.attrNames all);
 
   grabOverlayFunction = name:

@@ -49,11 +49,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747694841,
-        "narHash": "sha256-3PlYI9D3/DWJe4cOnjSqN6vb+bkW7nM2qdkjQ+CZTG8=",
+        "lastModified": 1747760887,
+        "narHash": "sha256-EEdBukyu/h5j2/vthEelzKKn/E6yie9vDpyk3yCUbiw=",
         "owner": "karpfediem",
         "repo": "ez-configs",
-        "rev": "d7f52889f7a25413efeb1dfbe4fc80a6f04862fe",
+        "rev": "b3bfd480610eb733d089643fe150d1f77adcad14",
         "type": "github"
       },
       "original": {
@@ -135,6 +135,27 @@
       "inputs": {
         "nixpkgs-lib": [
           "nixified-ai",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743550720,
+        "narHash": "sha256-hIshGgKZCgWh6AYJpJmRgFdR3WUbkY04o82X05xqQiY=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "c621e8422220273271f52058f618c94e405bb0f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nixified-ai",
           "hercules-ci-effects",
           "nixpkgs"
         ]
@@ -152,7 +173,7 @@
         "type": "indirect"
       }
     },
-    "flake-parts_3": {
+    "flake-parts_4": {
       "inputs": {
         "nixpkgs-lib": [
           "nixvim",
@@ -276,7 +297,7 @@
     },
     "hercules-ci-effects": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts_3",
         "nixpkgs": [
           "nixified-ai",
           "nixpkgs"
@@ -407,23 +428,22 @@
     },
     "nixified-ai": {
       "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
+        "flake-parts": "flake-parts_2",
         "hercules-ci-effects": "hercules-ci-effects",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1747513113,
-        "narHash": "sha256-Vyg5gbYk6WDTxmM05yJ6SAZ6IiD87XR3tUWrPY4gEEc=",
-        "path": "/home/carp/code/clones/flake",
-        "type": "path"
+        "lastModified": 1747142274,
+        "narHash": "sha256-5WuEIrM4yTSMMoxJHQ9RBwO0liBE9KcCldyiBfcYIHU=",
+        "owner": "nixified-ai",
+        "repo": "flake",
+        "rev": "ba83e9b493f5fd278abe8ee91040323296da3f39",
+        "type": "github"
       },
       "original": {
-        "path": "/home/carp/code/clones/flake",
-        "type": "path"
+        "owner": "nixified-ai",
+        "repo": "flake",
+        "type": "github"
       }
     },
     "nixos-hardware": {
@@ -508,6 +528,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1747542820,
+        "narHash": "sha256-GaOZntlJ6gPPbbkTLjbd8BMWaDYafhuuYRNrxCGnPJw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "292fa7d4f6519c074f0a50394dbbe69859bb6043",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1747610100,
         "narHash": "sha256-rpR5ZPMkWzcnCcYYo3lScqfuzEw5Uyfh+R0EKZfroAc=",
         "owner": "NixOS",
@@ -522,7 +558,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1747060738,
         "narHash": "sha256-ByfPRQuqj+nhtVV0koinEpmJw0KLzNbgcgi9EF+NVow=",
@@ -540,8 +576,8 @@
     },
     "nixvim": {
       "inputs": {
-        "flake-parts": "flake-parts_3",
-        "nixpkgs": "nixpkgs_4",
+        "flake-parts": "flake-parts_4",
+        "nixpkgs": "nixpkgs_5",
         "nuschtosSearch": "nuschtosSearch",
         "systems": "systems_4"
       },
@@ -618,7 +654,7 @@
         "nixidy": "nixidy",
         "nixified-ai": "nixified-ai",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-2411": "nixpkgs-2411",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",

@@ -18,5 +18,5 @@
     '';
   };
 
-  xdg.configFile."kitty/kitty.app.png" = { source = ../../overlays/pkgs/kitty/kitty.app.png; recursive = true; };
+  xdg.configFile."kitty/kitty.app.png" = { source = ../../nixpkgs/overlays/pkgs/kitty/kitty.app.png; recursive = true; };
 }

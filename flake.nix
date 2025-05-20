@@ -65,76 +65,76 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ flake-parts, system-manager, nixidy, ... }:
-    let
-      overlays = import ./overlays { inherit inputs; };
-      pkgsConfig = { };
-    in
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        inputs.git-hooks-nix.flakeModule
-        inputs.ez-configs.flakeModule
-      ];
+  outputs = inputs@{ self, flake-parts, system-manager, nixidy, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } ({ withSystem, flake-parts-lib, ... }:
+      let
+        inherit (flake-parts-lib) importApply;
+        flakeModules.default = importApply ./nixpkgs/default.nix { inherit withSystem; };
+      in
+      {
+        imports = [
+          flakeModules.default
+          inputs.git-hooks-nix.flakeModule
+          inputs.ez-configs.flakeModule
+        ];
 
-      systems = [ "x86_64-linux" ];
+        systems = [ "x86_64-linux" ];
 
-      flake = {
-        systemConfigs.default = system-manager.lib.makeSystemConfig {
-          modules = [
-            ./system-modules
-          ];
-        };
-      };
-
-      ezConfigs = {
-        root = ./.;
-        globalArgs = { inherit inputs; };
-        nixos.hosts = {
-          aquarium = {
-            userHomeModules = [ "carp" ];
-            extraModules = [ inputs.nixified-ai.nixosModules.comfyui ];
-          };
-          calm-otter.userHomeModules = [ "carp" ];
-          coy-koi.userHomeModules = [ "carp" ];
-        };
-      };
-
-      perSystem = { config, self', inputs', system, ... }:
-        let
-          pkgs = import inputs.nixpkgs {
-            inherit system overlays;
-            config = pkgsConfig;
-          };
-        in
-        {
-          _module.args = { inherit pkgs; };
-
-          devShells.default = pkgs.mkShell {
-            name = "devices";
-            packages = [
-              inputs'.nixidy.packages.default
+        flake = {
+          inherit self flakeModules;
+          systemConfigs.default = system-manager.lib.makeSystemConfig {
+            modules = [
+              ./system-modules
             ];
-            shellHook = ''
-              ${config.pre-commit.installationScript}
-              echo 1>&2 "Welcome to the development shell!"
-            '';
           };
+        };
 
-          pre-commit = {
-            check.enable = true;
-            settings.hooks = {
-              nixpkgs-fmt.enable = true;
+        ezConfigs = {
+          root = ./.;
+          globalArgs = { inherit inputs; };
+          extraModules = [ self.nixosModules.nixpkgs ];
+          nixos.hosts = {
+            aquarium = {
+              userHomeModules = [ "carp" ];
+              extraModules = [
+                self.nixosModules.nixpkgs
+                inputs.nixified-ai.nixosModules.comfyui
+              ];
             };
+            calm-otter.userHomeModules = [ "carp" ];
+            coy-koi.userHomeModules = [ "carp" ];
           };
+        };
 
-          legacyPackages = {
-            nixidyEnvs.${system} = inputs.nixidy.lib.mkEnvs {
-              inherit pkgs;
-              envs = {
-                dev.modules = [ ./k3s/dev ];
+        perSystem = { config, self', inputs', system, pkgs, ... }:
+          {
+            devShells.default = pkgs.mkShell {
+              name = "devices";
+              packages = [
+                inputs'.nixidy.packages.default
+              ];
+              shellHook = ''
+                ${config.pre-commit.installationScript}
+                echo 1>&2 "Welcome to the development shell!"
+              '';
+            };
+
+            formatter = pkgs.nixpkgs-fmt;
+            pre-commit = {
+              check.enable = true;
+              settings.hooks = {
+                nixpkgs-fmt.enable = true;
+              };
+            };
+
+            legacyPackages = {
+              nixidyEnvs.${system} = inputs.nixidy.lib.mkEnvs {
+                inherit pkgs;
+                envs = {
+                  dev.modules = [ ./k3s/dev ];
+                };
               };
             };
           };
-        };
-    };
+      });
 }
