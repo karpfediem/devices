@@ -12,6 +12,8 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    nixidy.url = "github:arnarg/nixidy";
+
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -109,18 +111,30 @@
 
           devShells.default = pkgs.mkShell {
             name = "devices";
+            packages = [
+              inputs'.nixidy.packages.default
+            ];
             shellHook = ''
               ${config.pre-commit.installationScript}
               echo 1>&2 "Welcome to the development shell!"
             '';
           };
 
-        pre-commit = {
-          check.enable = true;
-          settings.hooks = {
-            nixpkgs-fmt.enable = true;
+          pre-commit = {
+            check.enable = true;
+            settings.hooks = {
+              nixpkgs-fmt.enable = true;
+            };
+          };
+
+          legacyPackages = {
+            nixidyEnvs.${system} = inputs.nixidy.lib.mkEnvs {
+              inherit pkgs;
+              envs = {
+                dev.modules = [ ./k3s/dev ];
+              };
+            };
           };
         };
-      };
     };
 }
