@@ -18,9 +18,8 @@
     ../../nixos-modules/infra/k3s
   ];
 
-  systemd.services.nix-daemon.environment = {
-    HF_TOKEN = "changeme";
-    CIVITAI_API_TOKEN = "changeme";
+  systemd.services.nix-daemon.serviceConfig = {
+    EnvironmentFile = "/secrets/nix-daemon/env";
   };
 
   environment.systemPackages = lib.attrValues {
